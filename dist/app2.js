@@ -22,9 +22,10 @@ var Carro = /** @class */ (function () {
     return Carro;
 }());
 var Concessionaria = /** @class */ (function () {
-    function Concessionaria(endereco) {
+    function Concessionaria(endereco, listaDeCarros) {
         this.endereco = '';
         this.endereco = endereco;
+        this.listaDeCarros = listaDeCarros;
     }
     Concessionaria.prototype.fornecerEndereco = function () {
         return this.endereco;
@@ -55,5 +56,22 @@ var Pessoa = /** @class */ (function () {
     };
     return Pessoa;
 }());
-var pessoa = new Pessoa('Gabriel', 'Amarok');
-console.log(pessoa.dizerCarroPreferido());
+/** Criar carros */
+var carroA = new Carro('Amarok', 4);
+var carroB = new Carro('S10', 4);
+var carroC = new Carro('Corolla', 4);
+/** Montar lista de carros da concessionária */
+var listaDeCarros = [carroA, carroB, carroC];
+var concessionária = new Concessionaria('Avenida Paulista', listaDeCarros);
+/** Exibir a lista de carros */
+// console.log(concessionária.mostrarListaDeCarros())
+/** Criar um cliente para comprar um carro */
+var pessoaA = new Pessoa('Gabriel', 'S10');
+var pessoaB = new Pessoa('Bruna', 'Up!');
+concessionária.mostrarListaDeCarros().map(function (carro) {
+    if (carro['modelo'] == pessoaA.dizerCarroPreferido()) {
+        //compra o carro
+        pessoaA.comprarCarro(carro);
+    }
+});
+console.log(pessoaA.dizerCarroQueTem());

@@ -29,19 +29,21 @@ class Carro {
 
 class Concessionaria {
     private endereco: string = ''
-    private listaDeCarros: any
+    private listaDeCarros: Array<Carro>
 
     constructor(
-        endereco: string
+        endereco: string,
+        listaDeCarros: Array<Carro>
     ){
         this.endereco = endereco
+        this.listaDeCarros = listaDeCarros
     }
 
     public fornecerEndereco(): string {
         return this.endereco
     }   
 
-    public mostrarListaDeCarros(): any {
+    public mostrarListaDeCarros(): Array<Carro> {
         return this.listaDeCarros
     }
 }
@@ -67,7 +69,7 @@ class Pessoa {
         return this.carroPreferido
     }
 
-    public comprarCarro(carro: any): void {
+    public comprarCarro(carro: Carro): void {
         this.carro = carro
     }
 
@@ -76,5 +78,32 @@ class Pessoa {
     }
 }
 
-let pessoa = new Pessoa('Gabriel', 'Amarok')
-console.log(pessoa.dizerCarroPreferido())
+/** Criar carros */
+let carroA = new Carro('Amarok',4)
+let carroB = new Carro('S10',4)
+let carroC = new Carro('Corolla',4)
+
+/** Montar lista de carros da concessionária */
+let listaDeCarros: Array<Carro> = [carroA, carroB, carroC]
+
+let concessionária = new Concessionaria('Avenida Paulista', listaDeCarros)
+
+/** Exibir a lista de carros */
+// console.log(concessionária.mostrarListaDeCarros())
+
+/** Criar um cliente para comprar um carro */
+let pessoaA = new Pessoa('Gabriel', 'S10')
+let pessoaB = new Pessoa('Bruna', 'Up!')
+
+concessionária.mostrarListaDeCarros().map((carro: Carro) => {
+    if(carro['modelo'] == pessoaA.dizerCarroPreferido()){
+
+        //compra o carro
+        pessoaA.comprarCarro(carro)
+    }
+})
+
+
+console.log(pessoaA.dizerCarroQueTem())
+
+
