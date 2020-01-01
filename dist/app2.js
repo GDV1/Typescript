@@ -14,6 +14,7 @@ var concessionária = new Concessionaria_1.Concessionaria('Avenida Paulista', li
 // console.log(concessionária.mostrarListaDeCarros())
 /** Criar um cliente para comprar um carro */
 var pessoaA = new Pessoa_1.Pessoa('Gabriel', 'S10');
+var pessoaB = new Pessoa_1.Pessoa('Bruna', 'Up!');
 concessionária.mostrarListaDeCarros().map(function (carro) {
     if (carro['modelo'] == pessoaA.dizerCarroPreferido()) {
         //compra o carro

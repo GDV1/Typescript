@@ -17,6 +17,7 @@ let concessionária = new Concessionaria('Avenida Paulista', listaDeCarros)
 
 /** Criar um cliente para comprar um carro */
 let pessoaA = new Pessoa('Gabriel', 'S10')
+let pessoaB = new Pessoa('Bruna', 'Up!')
 
 concessionária.mostrarListaDeCarros().map((carro: Carro) => {
     if(carro['modelo'] == pessoaA.dizerCarroPreferido()){
