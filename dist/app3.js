@@ -2,10 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var Carro_1 = require("./Carro");
 var moto_1 = require("./moto");
+var Concessionaria_1 = require("./Concessionaria");
 var carro = new Carro_1.Carro('S10', 4);
 carro.acelerar();
 var moto = new moto_1.Moto();
 moto.acelerar();
 moto.acelerar();
+var concessionaria = new Concessionaria_1.Concessionaria('', []);
 console.log(carro);
 console.log(moto);
+console.log(concessionaria.fornecerHorariosDeFuncionamento());
